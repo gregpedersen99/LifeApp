@@ -7,41 +7,21 @@
 
 #I will need to set up a very simple database that tracks my checkboxes for each of the to-dos as well. 
 
-
-
-
 import tkinter as tk
-#from tkinter import PhotoImage
-
-from datetime import datetime 
-
-#parent = tk.Tk()
-#parent.title("The Life App")
-#parent.mainloop()
 
 
-
-
-
-dailyList = ["Read for 1 Hour", "Exercise", "Drink 1 gallon of water", "Do 2 Hours of independent work",
-                 "10 minutes financial planning", "Stretch", "Eat a fruit and vegetable", "Journal", "Talk to someone",
-                 "Clean for 30 minutes"]
-
-def getDailyGoals():
-    goals = []
-    while True:
-        input = input("Daily Goal: ")
-        if input
-
-
-
-print(len(dailyList))
 
 #I want each Date object to have the following:
 #Day month and year 
 #A recurring to Do List of daily things, added by the user 
 #A way to mark if each of these things were accomplished or not 
 #Independent things that are happening on that date, added by the user 
+
+
+#Initializing my date class here 
+
+
+
 
 class Date:
     def __init__(self, day, month, year,toDoList, items):
@@ -52,8 +32,38 @@ class Date:
         self.items = items 
 
 
+#Creating the goal class, first step here is creating an output of a fixed list of goals, todays date,
+#And the ability ot check them off or not. Going to use tkinter here in a different file for tkinter code
+#keeping this as classes. 
+
+class Goal:
+    def __init__(self, goal=None, isAchieved=False):
+        if goal is None:
+            self.goal = input("Goal: ")
+        else:
+            self.goal=goal
+        self.isAchieved = isAchieved #Default will be that goal is not achieved on a given day 
+
+    def set_goal(self):
+        self.goal = input("Goal: ")
+    
+    def __str__(self):
+        return f"{self.goal}"
+    
 
 
+
+class CheckButton:
+    def __init__(self, window, goal):
+        self.goal = goal #we do it like this because it need to be passed directly through upon initializing the class
+        self.var = tk.BooleanVar(value = goal.isAchieved) #referencing a method from another since we are relying on class Goal to be the variable used on initialization 
+        self.checkbutton = tk.Checkbutton(window, text = str(goal), variable = self.var, command = self.update_status) #Set text = str(goal) so we can just take the vaue of goal itself and not the value of isAchieved in the output next to the button 
+        self.checkbutton.pack() #Double . here since its a class on a class 
+
+    def update_status(self):
+        self.goal.isAchieved = self.var.get()
+
+    
 
 
 
