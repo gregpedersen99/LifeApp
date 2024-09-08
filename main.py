@@ -22,6 +22,11 @@ goals = [hc.Goal("Exercise"), hc.Goal("1 Hour of Reading"), hc.Goal("Journal"), 
 for goal in goals:
     hc.CheckButton(parent, goal)
 
+
+button = tk.Button(parent, text="Save", command=lambda: fc.get_outputs(goals))
+button.pack()
+
 parent.mainloop()
+
 
 
