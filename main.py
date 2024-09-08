@@ -30,3 +30,8 @@ parent.mainloop()
 
 
 
+#Now, it will add data into our database when we press "save"
+#Then, we need to get rid of the hardcode lock on the push to DB function since the intention is to not 
+#alwas have 5 goals here.
+#After this, we need to be able to adjust the start menu so it reflects the save state that we left it at 
+#When we last used it 
