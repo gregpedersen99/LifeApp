@@ -38,6 +38,11 @@ def convert_date(myDate): #Need if statements to coinvert the month to a str mon
 
     return adjustedDate
 
-
+def get_outputs(goals):
+    status = []
+    for goal in goals:
+        status.append(int(goal.isAchieved))
+    status = tuple(status)
+    return status 
 
 
